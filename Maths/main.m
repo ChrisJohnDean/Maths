@@ -42,13 +42,17 @@ int main(int argc, const char * argv[]) {
             
             NSInteger expectedAnswer = newQuestion.answer;
             
-            if(expectedAnswer == userInput) {
+            //compares users answer to expected answer
+            if([trimmedAnswer isEqualToString:@"quit"]) {
+                dontStop = NO;
+                continue;
+            } else if(expectedAnswer == userInput) {
                 NSLog(@"Right!");
             } else {
                 NSLog(@"Wrong!");
             }
             
-            //NSLog(@"Input was: \n%@", trimmedAnswer);
+            
         }
     }
     return 0;
