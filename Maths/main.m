@@ -10,8 +10,21 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        BOOL dontStop = YES;
+        
+        while(dontStop) {
+            
+            //255 unit long array of characters
+            char inputAnswer[255];
+            
+            //ask user for input
+            NSLog(@"Enter your answer: ");
+            //get input as a C string
+            fgets(inputAnswer, 255, stdin);
+            NSString *answer = [NSString stringWithCString:inputAnswer encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"Input was: %@", answer);
+        }
     }
     return 0;
 }
