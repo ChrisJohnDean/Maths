@@ -16,8 +16,15 @@
     if (self) {
         NSInteger randOne = arc4random_uniform(90) + 10;
         NSInteger randTwo = arc4random_uniform(90) + 10;
+        
+        NSString *strOne = [NSString stringWithFormat: @"%ld", (long)randOne];
+        NSString *strTwo = [NSString stringWithFormat: @"%ld", (long)randTwo];
+        
+        _question = [NSString stringWithFormat:@"%@ + %@ ?", strOne, strTwo];
+        NSLog(@"%@", _question);
         _answer = randOne + randTwo;
-        NSLog(@"%tu", _answer);
+        
+        //NSLog(@"%tu", _answer);
     }
     return self;
 }

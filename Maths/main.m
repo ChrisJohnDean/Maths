@@ -13,9 +13,11 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BOOL dontStop = YES;
         
-        AdditionQuestion *question = [[AdditionQuestion alloc] init];
+        
         
         while(dontStop) {
+            
+            AdditionQuestion *newQuestion = [[AdditionQuestion alloc] init];
             
             //255 unit long array of characters
             char inputAnswer[255];
@@ -27,15 +29,26 @@ int main(int argc, const char * argv[]) {
             fgets(inputAnswer, 255, stdin);
             
             //convert C string to NSString
-            NSString *answer = [NSString stringWithCString:inputAnswer encoding:NSUTF8StringEncoding];
+            NSString *userAnswer = [NSString stringWithCString:inputAnswer encoding:NSUTF8StringEncoding];
             
             //get character set of whitespace and new lines
             NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
             
             //trim whitespace and new lines input answer using character set
-            NSString *trimmedAnswer = [answer stringByTrimmingCharactersInSet: set];
+            NSString *trimmedAnswer = [userAnswer stringByTrimmingCharactersInSet: set];
             
-            NSLog(@"Input was: \n%@", trimmedAnswer);
+            //Convert users answer from to NSInteger
+            NSInteger userInput = [trimmedAnswer integerValue];
+            
+            NSInteger expectedAnswer = newQuestion.answer;
+            
+            if(expectedAnswer == userInput) {
+                NSLog(@"Right!");
+            } else {
+                NSLog(@"Wrong!");
+            }
+            
+            //NSLog(@"Input was: \n%@", trimmedAnswer);
         }
     }
     return 0;
