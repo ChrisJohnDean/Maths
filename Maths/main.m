@@ -19,11 +19,20 @@ int main(int argc, const char * argv[]) {
             
             //ask user for input
             NSLog(@"Enter your answer: ");
+            
             //get input as a C string
             fgets(inputAnswer, 255, stdin);
+            
+            //convert C string to NSString
             NSString *answer = [NSString stringWithCString:inputAnswer encoding:NSUTF8StringEncoding];
             
-            NSLog(@"Input was: %@", answer);
+            //get character set of whitespace and new lines
+            NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+            
+            //trim whitespace and new lines input answer using character set
+            NSString *trimmedAnswer = [answer stringByTrimmingCharactersInSet: set];
+            
+            NSLog(@"Input was: \n%@", trimmedAnswer);
         }
     }
     return 0;
