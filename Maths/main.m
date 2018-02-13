@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdditionQuestion.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BOOL dontStop = YES;
+        
+        AdditionQuestion *question = [[AdditionQuestion alloc] init];
         
         while(dontStop) {
             
