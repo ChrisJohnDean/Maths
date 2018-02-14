@@ -11,6 +11,11 @@
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
 #import "QuestionManager.h"
+#import "AdditionQuestion.h"
+#import "SubtractionQuestion.h"
+#import "MultiplicationQuestion.h"
+#import "DivisionQuestion.h"
+#import "QuestionFactory.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -18,10 +23,15 @@ int main(int argc, const char * argv[]) {
         
         ScoreKeeper* score = [[ScoreKeeper alloc] init];
         QuestionManager* questionManager = [[QuestionManager alloc] init];
+        QuestionFactory* questionFactory = [[QuestionFactory alloc] init];
         
         while(dontStop) {
             
-            Question *newQuestion = [[Question alloc] init];
+//            AdditionQuestion *newQuestion = [[AdditionQuestion alloc] init];
+//            SubtractionQuestion *newQuestion = [[SubtractionQuestion alloc] init];
+//            MultiplicationQuestion *newQuestion = [[MultiplicationQuestion alloc] init];
+//            DivisionQuestion *newQuestion = [[DivisionQuestion alloc] init];
+            Question* newQuestion = [questionFactory generateRandomQuestion];
             [questionManager.questions addObject: newQuestion];
             
             NSString *trimmedAnswer = [InputHandler parseInput];

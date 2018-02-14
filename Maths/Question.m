@@ -17,21 +17,18 @@
         
         _startTime = [NSDate date];
         
-        NSInteger randOne = arc4random_uniform(90) + 10;
-        NSInteger randTwo = arc4random_uniform(90) + 10;
+        self.leftValue = arc4random_uniform(90) + 11;
+        self.rightValue = arc4random_uniform(90) + 11;
         
-        NSString *strOne = [NSString stringWithFormat: @"%ld", (long)randOne];
-        NSString *strTwo = [NSString stringWithFormat: @"%ld", (long)randTwo];
+//        _question = [NSString stringWithFormat:@"%ld + %ld ?", (long)_rightValue, (long)_leftValue];
+//        NSLog(@"%@", _question);
+//        _answer = _leftValue + _rightValue;
         
-        _question = [NSString stringWithFormat:@"%@ + %@ ?", strOne, strTwo];
-        NSLog(@"%@", _question);
-        _answer = randOne + randTwo;
-        
-        //NSLog(@"%tu", _answer);
     }
     return self;
 }
 
+-(void)generateQuestion{}
 
 //Overriding answer property getter
 -(NSInteger)answer {

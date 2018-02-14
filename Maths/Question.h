@@ -10,11 +10,14 @@
 
 @interface Question : NSObject
 
-@property NSString *question;
-@property (nonatomic)NSInteger answer;
-@property NSDate* startTime;
-@property NSDate* endTime;
+@property (nonatomic, strong) NSString *question;
+@property (nonatomic) NSInteger answer;
+@property (nonatomic, strong) NSDate* startTime;
+@property (nonatomic, strong) NSDate* endTime;
+@property (nonatomic) NSInteger rightValue;
+@property (nonatomic) NSInteger leftValue;
 
 -(NSTimeInterval)answerTime;
+-(void)generateQuestion;
 
 @end
