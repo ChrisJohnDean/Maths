@@ -10,16 +10,19 @@
 #import "AdditionQuestion.h"
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
+#import "QuestionManager.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BOOL dontStop = YES;
         
-        ScoreKeeper *score = [[ScoreKeeper alloc] init];
+        ScoreKeeper* score = [[ScoreKeeper alloc] init];
+        QuestionManager* questionManager = [[QuestionManager alloc] init];
         
         while(dontStop) {
             
             AdditionQuestion *newQuestion = [[AdditionQuestion alloc] init];
+            [questionManager.questions addObject: newQuestion];
             
             NSString *trimmedAnswer = [InputHandler parseInput];
             
@@ -41,7 +44,8 @@ int main(int argc, const char * argv[]) {
                 NSLog(@"Wrong!");
 
             }
-           [score displayScore];
+            [score displayScore];
+            [questionManager timeOutput];
         }
         
     }

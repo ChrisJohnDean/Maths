@@ -14,6 +14,9 @@
 {
     self = [super init];
     if (self) {
+        
+        _startTime = [NSDate date];
+        
         NSInteger randOne = arc4random_uniform(90) + 10;
         NSInteger randTwo = arc4random_uniform(90) + 10;
         
@@ -27,6 +30,20 @@
         //NSLog(@"%tu", _answer);
     }
     return self;
+}
+
+
+//Overriding answer property getter
+-(NSInteger)answer {
+    _endTime = [NSDate date];
+    return _answer;
+}
+
+-(NSTimeInterval)answerTime {
+    
+    NSTimeInterval timeInterval = [_endTime timeIntervalSinceDate: _startTime];
+   // NSLog(@"%.02f seconds to answer that question", timeInterval);
+    return timeInterval;
 }
 
 @end
