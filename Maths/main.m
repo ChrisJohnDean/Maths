@@ -9,17 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "AdditionQuestion.h"
 #import "InputHandler.h"
+#import "ScoreKeeper.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BOOL dontStop = YES;
         
-        
+        ScoreKeeper *score = [[ScoreKeeper alloc] init];
         
         while(dontStop) {
             
             AdditionQuestion *newQuestion = [[AdditionQuestion alloc] init];
-          
+            
             NSString *trimmedAnswer = [InputHandler parseInput];
             
             //Convert users answer from to NSInteger
@@ -32,13 +33,17 @@ int main(int argc, const char * argv[]) {
                 dontStop = NO;
                 continue;
             } else if(expectedAnswer == userInput) {
+                score.correctCount += 1;
                 NSLog(@"Right!");
+
             } else {
+                score.incorrectCount += 1;
                 NSLog(@"Wrong!");
+
             }
-            
-            
+           [score displayScore];
         }
+        
     }
     return 0;
 }
