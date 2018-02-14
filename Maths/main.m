@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AdditionQuestion.h"
+#import "Question.h"
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
 #import "QuestionManager.h"
@@ -21,7 +21,7 @@ int main(int argc, const char * argv[]) {
         
         while(dontStop) {
             
-            AdditionQuestion *newQuestion = [[AdditionQuestion alloc] init];
+            Question *newQuestion = [[Question alloc] init];
             [questionManager.questions addObject: newQuestion];
             
             NSString *trimmedAnswer = [InputHandler parseInput];
@@ -46,6 +46,7 @@ int main(int argc, const char * argv[]) {
             }
             [score displayScore];
             [questionManager timeOutput];
+            
         }
         
     }
